@@ -13,11 +13,11 @@ If you are a total beginner to this, start here!
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/zaid223r/djangochat.git
+    git clone https://github.com/zaid223r/chatapp.git
     ```
 2. Navigate to the project directory:
     ```bash
-    cd djangochat
+    cd chatapp
     ```
 3. Install dependencies:
     ```bash

@@ -1,0 +1,35 @@
+{% extends "main/index.html" %}
+
+{% load socialaccount %}
+
+{% block title %}Login to {% endblock title %}
+
+{% block content %}
+    <div class="p-10 lg:p-20 text-center">
+        <h1 class="text-3xl lg:text-6x text-white">Log in</h1>
+    </div>
+    
+    <form method="POST" action="." class="lg:w-1/4 px-4 mx-auto">
+        {% csrf_token %}
+        <div class="mb-5">
+            <label class="text-white">Username</label>
+            <input type="text" name="username" class="w-full mt-2 px-4 py-2 rounded-xl">
+        </div>
+        <div class="mb-5">
+            <label class="text-white">Password</label>
+            <input type="password" name="password" class="w-full mt-2 px-4 py-2 rounded-xl">
+        </div>
+        
+        <a href="{% provider_login_url 'google' %}" class="google-login-button">
+            Login with Google
+        </a>
+
+        {% if form.errors %}
+            <div class="mb-5 p-4 rounded-xl bg-red-400 text-white text-xs">
+                <p>Incorrect username or password. Please try again.</p>
+            </div>
+        {% endif %}
+
+        <button class="px-5 py-3 rounded-xl text-white bg-red-700 hover:bg-red-500">Log in</button>
+    </form>
+{% endblock content %}

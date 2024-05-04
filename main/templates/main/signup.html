@@ -1,0 +1,41 @@
+{% extends "main/index.html" %}
+
+{% block title %}Signup to {% endblock title %}
+
+{% load socialaccount %}
+
+{% block content %}
+    <div class="p-10 lg:p-20 text-center">
+        <h1 class="text-3xl lg:text-6x text-white">Sign up</h1>
+    </div>
+    
+    <form method="post" action="." class="lg:w-1/4 px-4 mx-auto">
+        {% csrf_token %}
+        <div class="mb-5">
+            <label class="text-white">Username</label>
+            <input type="text" name="username" class="w-full mt-2 px-4 py-2 rounded-xl">
+        </div>
+        <div class="mb-5">
+            <label class="text-white">Email</label>
+            <input type="email" name="email" class="w-full mt-2 px-4 py-2 rounded-xl">
+        </div>
+        <div class="mb-5">
+            <label class="text-white">Password</label>
+            <input type="password" name="password1" class="w-full mt-2 px-4 py-2 rounded-xl">
+        </div>
+        <div class="mb-5">
+            <label class="text-white">Repeat Password</label>
+            <input type="password" name="password2" class="w-full mt-2 px-4 py-2 rounded-xl">
+        </div>
+        
+        <a href="{% provider_login_url 'google' %}">Login with Google</a>
+            
+        {% if form.errors %}
+            <div class="mb-5 p-4 rounded-xl bg-red-400 text-white text-xs">
+                <p>{{form.errors}}</p>
+            </div>
+        {% endif %}
+
+        <button class="px-5 py-3 rounded-xl text-white bg-red-700 hover:bg-red-500">Submit</button>
+    </form>
+{% endblock content %}
